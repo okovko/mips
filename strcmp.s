@@ -1,3 +1,7 @@
+###############################################################################################
+# MIPS R2000 (no macros)
+###############################################################################################
+
 .data
 welcome:    .asciiz    "\nThis program tests a MIPS strcmp.
 To test a NULL string, type NULL.\n"
@@ -11,6 +15,9 @@ nullstr:    .asciiz    "NULL\n"
 .globl main
 .globl strcmp
     
+###############################################################################################
+# self explanatory driver for SPIM to command line test strcmp
+###############################################################################################
 main:
                  li $v0, 4
                  la $a0, welcome
@@ -74,6 +81,14 @@ main:
                  li $v0, 10
                  syscall
 
+###############################################################################################
+# this is standard C strcmp, with null handling (undefined by C standard)
+# this is a leaf function
+# 
+# this implementation has coherent behavior for null pointer arguments:
+# 1) both inputs null => return 0
+# 2) first input null => return (0 - *second)
+# 3) second input null => return *first
 ###############################################################################################
 strcmp:
                  li $v0, 0                  # cmp = 0
