@@ -3,7 +3,7 @@
 ###############################################################################################
     
 .data
-welcome:    .asciiz    "\nEnter a number (interpreted as unsigned) \
+welcome:    .asciiz    "\nEnter a number 0-12 (> 12 overflows) \
 to calculate its factorial (recursive)."
 prompt:     .asciiz    "\nNumber: "
 output:     .asciiz    "\nFactorial: "
